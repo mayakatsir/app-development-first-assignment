@@ -1,6 +1,8 @@
 package com.example.maya_and_karen_first_assignment
 
+import android.graphics.Typeface
 import android.os.Bundle
+import android.util.TypedValue
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -65,7 +67,10 @@ class MainActivity : AppCompatActivity() {
         }
         if (isGameOver) {
             restartGameButton.visibility = Button.VISIBLE
-            updatePlayerTextColor() // Set final color for Win/Draw text
+            updatePlayerTextColor()
+            
+            currPlayerTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 32f)
+            currPlayerTextView.setTypeface(null, Typeface.BOLD)
             return
         }
 
@@ -89,12 +94,10 @@ class MainActivity : AppCompatActivity() {
         for (row in gameBoard) {
             for (cell in row) {
                 if (cell == "") {
-
                     return false
                 }
             }
         }
-
         return true
     }
 
@@ -125,6 +128,10 @@ class MainActivity : AppCompatActivity() {
         isGameOver = false
 
         currPlayerTextView.text = "Current Player is: X"
+        
+        currPlayerTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24f)
+        currPlayerTextView.setTypeface(null, Typeface.NORMAL)
+
         updatePlayerTextColor()
         restartGameButton.visibility = Button.INVISIBLE
     }
