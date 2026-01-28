@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         }
         if (isGameOver) {
             restartGameButton.visibility = Button.VISIBLE
+            updatePlayerTextColor() // Set final color for Win/Draw text
             return
         }
 
