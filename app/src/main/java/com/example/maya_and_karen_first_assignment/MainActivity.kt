@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         currPlayerTextView = findViewById(R.id.main_activity_current_player_text_view)
         restartGameButton = findViewById(R.id.main_activity_restart_game_button)
         restartGameButton.setOnClickListener { restartGame() }
+        
+        updatePlayerTextColor()
     }
 
     private fun initButtons() {
@@ -74,6 +76,12 @@ class MainActivity : AppCompatActivity() {
         val nextPlayer = if (turnCounter % 2 == 0) "X" else "O"
 
         currPlayerTextView.text = "Current Player is: ${nextPlayer}"
+        updatePlayerTextColor()
+    }
+
+    private fun updatePlayerTextColor() {
+        val color = if (turnCounter % 2 == 0) getColor(R.color.red) else getColor(R.color.blue)
+        currPlayerTextView.setTextColor(color)
     }
 
     private fun isDraw(): Boolean {
@@ -116,6 +124,7 @@ class MainActivity : AppCompatActivity() {
         isGameOver = false
 
         currPlayerTextView.text = "Current Player is: X"
+        updatePlayerTextColor()
         restartGameButton.visibility = Button.INVISIBLE
     }
 
